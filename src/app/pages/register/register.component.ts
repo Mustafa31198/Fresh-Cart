@@ -1,8 +1,6 @@
-import { Message } from './../../../../node_modules/esbuild/lib/main.d';
-import { error } from './../../../../node_modules/ajv/lib/vocabularies/applicator/dependencies';
-import { FsaNodeWorkerMsgResponseError } from './../../../../node_modules/memfs/lib/fsa-to-node/worker/types.d';
+
 import { Component, inject } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import {
   AbstractControl,
   FormControl,
@@ -10,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthService } from '../../core/services/auth/auth.service';
+import { AuthService } from '../../core/services/auth/AuthService';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -32,7 +30,7 @@ export class RegisterComponent {
       ]),
       password: new FormControl(null, [
         Validators.required,
-        Validators.pattern(/^[A-z]\w{7,}$/),
+        Validators.pattern(/^[A-z]\w{5,}$/),
       ]),
       email: new FormControl(null, [Validators.required, Validators.email]),
       rePassword: new FormControl(null, [Validators.required]),
@@ -55,11 +53,10 @@ export class RegisterComponent {
             this.router.navigate(['/login']);
           }, 500);
 
-
           this.success = res.message;
         }
       },
-      error: (err:HttpErrorResponse) => {
+      error: (err: HttpErrorResponse) => {
         this.msgError = err.error.message;
       },
     });
