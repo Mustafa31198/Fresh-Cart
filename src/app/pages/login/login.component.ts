@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   FormControl,
   FormGroup,
@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule , RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -36,7 +36,7 @@ export class LoginComponent {
         if (res.message === 'success') {
           setTimeout(() => {
             localStorage.setItem('userToken', res.token);
-            // this.authService.saveUserData();
+            this.authService.saveUserData();
             this.router.navigate(['/home']);
           }, 500);
 

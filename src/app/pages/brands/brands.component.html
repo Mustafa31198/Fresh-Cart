@@ -1,1 +1,15 @@
-<p>brands works!</p>
+<section class="brands mt-10">
+    <h1 class="text-3xl font-bold text-center text-green-600 mb-5">All Brands</h1>
+
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        @for (prod of products.slice(0,12); track prod._id) {
+        <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative">
+            <div class="text-center pb-4">
+                <img [src]="prod.image" class="w-full" [alt]="prod.name" />
+                <span>{{prod.name}}</span>
+            </div>
+        </div>
+        }
+
+    </div>
+</section>

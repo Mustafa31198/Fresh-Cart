@@ -13,64 +13,79 @@
             </svg>
         </button>
         <div class="hidden w-full md:flex md:w-auto flex-grow" id="navbar-default">
-           @if (isLogin()) {
+            @if (isLogin()) {
             <ul
-            class="capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  m-auto">
-            <li>
-                <a routerLink="home" routerLinkActive="bg-green-600 text-white rounded-sm " class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">home</a>
-            </li>
-            <li>
-                <a routerLink="cart" routerLinkActive="bg-green-600 text-white rounded-sm " class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">cart</a>
-            </li>
-          
-            <li>
-                <a routerLink="products" routerLinkActive="bg-green-600 text-white rounded-sm " class="block text-gray-700 py-2 px-3 rounded-sm  "
-                    aria-current="page">products</a>
-            </li>
-            <li>
-                <a routerLink="categories" routerLinkActive="bg-green-600 text-white rounded-sm " class="block text-gray-700 py-2 px-3 rounded-sm  "
-                    aria-current="page">categories</a>
-            </li>
-            <li>
-                <a routerLink="brands" routerLinkActive="bg-green-600 text-white rounded-sm " class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">brands</a>
-            </li>
-        </ul>
-           }
-           
-            <ul class="ms-auto capitalize  flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0">
+                class="capitalize flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  m-auto">
                 <li>
-                    <a href="#" class="block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i class="fa-brands fa-facebook"></i></a>
+                    <a routerLink="home" routerLinkActive="bg-green-600 text-white rounded-sm "
+                        class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">home</a>
                 </li>
                 <li>
-                    <a href="#" class="block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i class="fa-brands fa-twitter"></i></a>
+                    <a routerLink="products" routerLinkActive="bg-green-600 text-white rounded-sm "
+                        class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">products</a>
                 </li>
                 <li>
-                    <a href="#" class="block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i class="fa-brands fa-instagram"></i></a>
+                    <a routerLink="categories" routerLinkActive="bg-green-600 text-white rounded-sm "
+                        class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">categories</a>
                 </li>
                 <li>
-                    <a href="#" class="block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i class="fa-brands fa-tiktok"></i></a>
+                    <a routerLink="brands" routerLinkActive="bg-green-600 text-white rounded-sm "
+                        class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">brands</a>
+                </li>
+            </ul>
+            }
+
+            <ul
+                class="ms-auto capitalize  flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-0 rtl:space-x-reverse md:mt-0 md:border-0 items-center">
+
+                <li>
+                    <a routerLink="/cart" routerLinkActive="text-green-600"
+                        class="text-3xl nav-link block text-gray-700 py-2 px-2 rounded-sm  relative" aria-current="page"><i
+                            class="fa-solid fa-cart-shopping"></i><span class="bg-red-600 text-sm text-white font-medium px-1 rounded absolute top-0 end-0">{{countNumber}}</span></a>
+                </li>
+
+                <li>
+                    <a routerLink="/wish" routerLinkActive="text-red-400"
+                        class="text-3xl nav-link block text-gray-700 py-2 px-2 rounded-sm  relative" aria-current="page"><i
+                            class="fa-solid fa-heart"></i><span class="bg-red-600 text-sm text-white font-medium px-1 rounded absolute top-0 end-0">{{wishCountNumber}}</span></a>
+                </li>
+
+                <li>
+                    <a class="nav-link block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i
+                            class="fa-brands fa-facebook"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i class="fa-brands fa-youtube"></i></a>
+                    <a class="nav-link block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i
+                            class="fa-brands fa-twitter"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a class="nav-link block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i
+                            class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                    <a class="nav-link block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i
+                            class="fa-brands fa-tiktok"></i></a>
+                </li>
+                <li>
+                    <a class="nav-link block text-gray-700 py-2 px-2 rounded-sm  " aria-current="page"><i
+                            class="fa-brands fa-youtube"></i></a>
                 </li>
                 @if (!isLogin()) {
-                    <li>
-                        <a routerLink="login" routerLinkActive="bg-green-600 text-white rounded-sm " class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">login</a>
-                    </li>
-                    <li>
-                        <a routerLink="register" routerLinkActive="bg-green-600 text-white rounded-sm " class="block text-gray-700 py-2 px-3 rounded-sm  "
-                            aria-current="page">register</a>
-                    </li>
+                <li>
+                    <a routerLink="login" routerLinkActive="bg-green-600 text-white rounded-sm "
+                        class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">login</a>
+                </li>
+                <li>
+                    <a routerLink="register" routerLinkActive="bg-green-600 text-white rounded-sm "
+                        class=" block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">register</a>
+                </li>
                 }@else {
-                    <li>
-                        <a class="block text-gray-700 py-2 px-3 rounded-sm  " aria-current="page">logOut</a>
-                    </li>
+                <li>
+                    <a class="block text-gray-700 py-2 px-3 rounded-sm  cursor-pointer" (click)="logOutB()">logOut</a>
+                </li>
                 }
-    
-              
+
+
             </ul>
         </div>
     </div>

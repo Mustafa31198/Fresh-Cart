@@ -13,7 +13,7 @@ export class ProductsService {
   getAllProducts():Observable<any>{
     return this.httpClient.get('https://ecommerce.routemisr.com/api/v1/products')
   }
-  getSpecificProducts(id:string):Observable<any>{
+  getSpecificProducts(id:string | null):Observable<any>{
     return this.httpClient.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
   }
 

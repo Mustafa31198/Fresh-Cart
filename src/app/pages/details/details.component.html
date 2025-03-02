@@ -1,1 +1,35 @@
-<p>details works!</p>
+<section class="w-3/4 mx-auto bg-gray-50 p-4 rounded border shadow my-20">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 py-0 gap-6 px-4 bg-white rounded-lg shadow-md mx-auto">
+
+        <div>
+            <img [src]="productDetails.imageCover" class="w-full" [alt]="productDetails.title">
+        </div>
+
+
+        <div class="flex flex-col justify-center">
+            <h2 class="text-2xl font-bold text-gray-800">{{productDetails.title}}</h2>
+            <p class="text-gray-600 mt-2">{{productDetails.description}}</p>
+            <p class="font-bold text-gray-600">{{productDetails.category.name}}</p>
+            <p class="text-lg font-semibold text-gray-800 mt-4">{{productDetails.price}}</p>
+<span class="flex items-center">
+    <p class=" text-gray-800 mt-4 me-3">{{productDetails.ratingsAverage}}</p>
+
+    @for (num of [1,2,3,4,5].slice(0,productDetails.ratingsAverage); track $index) {
+    
+        <span ><i class="fas fa-star rating-color text-yellow-300"></i></span>
+    }
+    @if(productDetails.ratingsAverage % 1 !==0){
+        <i class="fa-solid fa-star-half-stroke rating-color text-yellow-300"></i>
+    }
+   
+</span>
+
+
+            <button (click)="addToCart(productDetails.id)" class="mt-4 bg-green-500 text-white py-2  rounded-lg hover:bg-green-600 transition">
+                + Add
+            </button>
+        </div>
+    </div>
+
+</section>

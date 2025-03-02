@@ -1,1 +1,31 @@
-<p>products works!</p>
+<section class="products">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+@for (product of products.slice(0,12); track product._id) {
+    <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative">
+    
+      <div  [routerLink]="['/details',product.id]">
+        <div class="card-img">
+          <img [src]="product.imageCover" class="w-full" [alt]="product.title" />
+        </div>
+        <div class="card-body px-2 py-4">
+          <h4 class="text-green-500 text-xs">{{product.category.name}}</h4>
+          <h3 class="font-medium">{{product.title.split(" ",2).join(" ")}}</h3>
+          <div class="flex justify-between items-center">
+            <span>{{product.price}}EGP</span>
+            <div class="flex items-center">
+              <i class="fas fa-star text-yellow-300"></i>
+              <span class="text-gray-500">{{product.ratingsAverage}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+<div class=" flex justify-between">
+  <button (click)="addToCart(product.id)" class="bg-green-600 text-white py-2 px-10 border rounded w-96  block">Add to cart</button>
+  <a  (click)="addToWishList(product.id)" class="text-3xl nav-link block text-gray-700 py-2 px-2 rounded-sm cursor-pointer" aria-current="page"><i class="fa-solid fa-heart"></i></a>
+
+</div>
+      </div>
+}
+    
+    </div>
+</section>

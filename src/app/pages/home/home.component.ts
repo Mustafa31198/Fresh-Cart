@@ -4,16 +4,20 @@ import { IProduct } from '../../shared/interfaces/iproduct';
 import { CategoriesService } from '../../core/services/categories/categories.service';
 import { ICategory } from '../../shared/interfaces/icategory';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
-
+import { RouterLink } from '@angular/router';
+import { CartService } from '../../core/services/cart/cart.service';
+import { WishlistService } from '../../core/services/wishlist.service';
 @Component({
   selector: 'app-home',
-  imports: [CarouselModule],
+  imports: [CarouselModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   private readonly productsService = inject(ProductsService);
   private readonly categoriesService = inject(CategoriesService);
+  private readonly cartService = inject(CartService);
+  private readonly wishlistService = inject(WishlistService);
 
   customMainSlider: OwlOptions = {
     loop: true,
@@ -25,11 +29,8 @@ export class HomeComponent implements OnInit {
     navText: ['', ''],
     items: 1,
     nav: true,
-    autoplay:true,
-    autoplayHoverPause:true,
-   
-   
-    
+    autoplay: true,
+    autoplayHoverPause: true,
   };
 
   customOptions: OwlOptions = {
@@ -78,6 +79,26 @@ export class HomeComponent implements OnInit {
         console.log(res.data);
         this.categories = res.data;
       },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+  addToCart(id: string): void {
+    this.cartService.addToCart(id).subscribe({
+      next: (res) => {
+        this.cartService.cartNumber.next(res.numOfCartItems)
+        console.log(res)        
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  addToWishList(id: string): void {
+    this.wishlistService.addToWishList(id).subscribe({
+      next: (res) => {},
       error: (err) => {
         console.log(err);
       },

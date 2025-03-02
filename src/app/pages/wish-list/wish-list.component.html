@@ -1,0 +1,24 @@
+<section class="w-1/2 mx-auto bg-gray-50 p-4 rounded border shadow">
+    <h1 class="text-3xl font-medium text-center text-green-600">My Wish List</h1>
+    @for (product of wishListDetails; track $index) {
+    <div class="grid md:grid-cols-[20%_minmax(0,1fr)]">
+        <div class="">
+            <img [src]="product.imageCover" class="w-full" [alt]="product.title">
+        </div>
+        <div class="ms-5 flex justify-between items-center">
+            <div>
+                <h3>{{product.title}}</h3>
+                <h4>Price : {{product.price}}EGP</h4>
+                <button (click)="removeItem(product.products._id)"
+                    class="mt-5 bg-red-600 rounded py-2 px-4 text-white"><i class="fa-solid fa-trash"></i>
+                    Remove</button>
+            </div>
+            <div class="flex items-center gap-3">
+                <button (click)="addToCart(product.products._id)"
+                    class="bg-green-600 text-white py-2 px-10 border rounded  block">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    }
+
+</section>

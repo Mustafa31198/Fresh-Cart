@@ -1,1 +1,32 @@
-<p>checkout works!</p>
+<section class="w-1/2 mx-auto bg-gray-50 p-4 rounded border shadow">
+    <h1 class="text-3xl font-medium text-center text-green-600">CheckOut</h1>
+    <form [formGroup]="submitForm" (ngSubmit)="onSubmitForm(selectedMethod)">
+        <div>
+            <div class="mb-1">
+                <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-green-600">phone</label>
+                <input type="tel" formControlName="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+            </div>
+        </div>
+        <div>
+            <div class="mb-1">
+                <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-green-600">city</label>
+                <input type="text" formControlName="city" id="city" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+            </div>
+        </div>
+        <div>
+            <div class="mb-1">
+                <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-green-600">details</label>
+                <textarea formControlName="details" id="details" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                </textarea>
+                </div>
+        </div>
+        <div class=" flex gap-4 justify-center">
+            <button (click)="selectedMethod='cash'" class="mt-5 bg-green-600 rounded py-2 px-4 text-white">Cash Payment <i
+                    class="fas fa-cash-register"></i></button>
+            <button (click)="selectedMethod='online'" class="mt-5 bg-green-600 rounded py-2 px-4 text-white">Online Payment <i
+                    class="fas fa-credit-card"></i></button>
+
+        </div>
+    </form>
+
+</section>

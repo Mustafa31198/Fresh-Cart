@@ -1,1 +1,29 @@
-<p>cart works!</p>
+<section  class="w-1/2 mx-auto bg-gray-50 p-4 rounded border shadow">
+    <h1 class="text-3xl font-medium text-center text-green-600">Shop Cart</h1>
+    <span class="text-green-600">Price: {{cartDetails.totalCartPrice}} EGP</span>
+@for (prod of cartDetails.products; track prod.product.id) {
+    <div class="grid md:grid-cols-[20%_minmax(0,1fr)]">
+        <div class="">
+            <img [src]="prod.product.imageCover" class="w-full" [alt]="prod.product.title">
+        </div>
+        <div class="flex justify-between items-center">
+            <div>
+                <h3>{{prod.product.title}}</h3>
+                <h4>Price : {{prod.price}}EGP</h4>
+                    <button (click)="removeItem(prod.product.id)" class="mt-5 bg-red-600 rounded py-2 px-4 text-white"><i class="fa-solid fa-trash"></i> Remove</button>
+            </div>
+            <div class="flex items-center gap-3">
+                <button (click)="updateQuantity(prod.product.id , prod.count + 1 )" class="text-green-600 text-3xl"><i class="fa-solid fa-square-plus"></i></button>
+                <span>{{prod.count}}</span>
+                <button (click)="updateQuantity(prod.product.id , prod.count -1 )" class="text-green-600 text-3xl"><i class="fa-solid fa-square-minus"></i></button>
+            </div>
+        </div>
+    </div>
+}
+<div class="flex justify-between ">
+    <button routerLink='/checkout' class="mt-5 bg-green-600 rounded py-2 px-4 text-white">Checkout</button>
+<button (click)="clearCart()" class="mt-5 bg-red-600 rounded py-2 px-4 text-white">Clear cart</button>
+</div>
+
+
+</section>
